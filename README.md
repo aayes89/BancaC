@@ -8,7 +8,9 @@ Banca
 * Desarrollo de Rest y Web API.
 * Pruebas de Integracion.
 * Desarrollo de apk.
-* ...
+* Despliegue en servidor.
+* Documentar todo.
+* etc...
 
 
 # Autors:
