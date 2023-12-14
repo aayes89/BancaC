@@ -14,5 +14,6 @@ Banca
 
 
 # Autors:
-Reydel Baños Acosta
-Allan Ayes Ramírez
+- Reydel Baños Acosta
+
+- Allan Ayes Ramírez
