@@ -1,12 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-package bancac;
-
 /**
  *
- * @author localadmin
+ * @author Slam
  */
 import java.time.Instant;
 import java.util.ArrayList;
@@ -25,7 +19,7 @@ public class Main {
 
 class SistemaApostador {
 
-    private Map<String, Trabajador> trabajadores;
+    private Map<Trabajador, Double> trabajadores;
     private List<List<String>> lista;
     private Modalidad modalidad;
     private Control control;
@@ -212,7 +206,7 @@ class Control { // Clase intermedia (posiblemente para uso en la API)
 
 class Banco {
 
-    public void distribuirGanancias(Map<String, Trabajador> jugadores) {
+    public void distribuirGanancias(Map<Trabajador, Double> trabajadores) {
         // Implementa lógica para distribuir ganancias
     }
 }
