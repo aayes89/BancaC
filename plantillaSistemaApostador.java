@@ -1,3 +1,4 @@
+
 /**
  *
  * @author Slam
@@ -12,45 +13,34 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        SistemaApostador sa = new SistemaApostador();
 
-    }
-}
-
-class SistemaApostador {
-
-    private Map<Trabajador, Double> trabajadores;
-    private List<List<String>> lista;
-    private Modalidad modalidad;
-    private Control control;
-    private Banco banco;
-
-    public SistemaApostador() {
-        this.trabajadores = new HashMap<>();
-        this.modalidad = new Modalidad();
-        this.control = new Control();
-        this.banco = new Banco();
-    }
-
-    public void agregarJugador(String nombre, String numeroApostado, String modalidad) {
-
-    }
-
-    public void capturarResultado(String nombreJugador, int resultado) {
-
-    }
-
-    public void distribuirGanancias() {
-        banco.distribuirGanancias(trabajadores);
     }
 }
 
 class Persona {
 
+    private String ID;
     private String nombre;
+
     /*
      Definir si hace falta más información genérica que pueda ser usada luego
      */
+    public String getID() {
+        return ID;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
 }
 
 class Jugador extends Persona {
@@ -136,11 +126,12 @@ class Trabajador extends Persona {
     public double getSalarioTrabajador() {
         return salarioTrabajador + estipendio;
     }
-    
-    public void setSalario(double salario){
+
+    public void setSalario(double salario) {
         this.salarioTrabajador = salario;
     }
-    public void setEstipendio(double estipendio){
+
+    public void setEstipendio(double estipendio) {
         this.estipendio = estipendio;
     }
 
@@ -173,7 +164,7 @@ class Candado extends Modalidad {
 
 }
 
-class Control { // Clase intermedia (posiblemente para uso en la API)
+class Control { // Clase controldora intermedia (posiblemente para uso en la API)
 
     private Date fecha;
     private List<Double> salariosPTrabajadores;
@@ -187,18 +178,40 @@ class Control { // Clase intermedia (posiblemente para uso en la API)
         datosEntrada = new HashMap<>();
     }
 
+    public void añadirTrabajador(Trabajador t) {
+        listadoTrabajadores.add(t);
+    }
+
+    public void darBajaTrabajador(Trabajador t) {
+        if (listadoTrabajadores.contains(t)) {
+            listadoTrabajadores.remove(t);
+        }
+    }
+
+    public Trabajador buscarTrabajador(String nombre, String id) {
+        Trabajador t = null;
+        for (Trabajador tmp : listadoTrabajadores) {
+            if (tmp.getID().equalsIgnoreCase(id) && tmp.getNombre().equalsIgnoreCase(nombre)) {
+                t = tmp;
+                break;
+            }
+        }
+        return t;
+    }
+
     public void registrarEntrada(Trabajador entradaTrabajador) {
         // Implementa lógica para registrar resultados
         datosEntrada.put(fecha.toString(), entradaTrabajador);
     }
 
     public void establecerSalarioBase(double salario) {
-       for(Trabajador t:listadoTrabajadores){
-           t.setSalario(salario);
-       }
+        for (Trabajador t : listadoTrabajadores) {
+            t.setSalario(salario);
+        }
     }
-    public void agregarEstipendio(Trabajador t, double estipendio){
-        if(listadoTrabajadores.contains(t)){
+
+    public void agregarEstipendio(Trabajador t, double estipendio) {
+        if (listadoTrabajadores.contains(t)) {
             listadoTrabajadores.get(listadoTrabajadores.indexOf(t)).setEstipendio(estipendio);
         }
     }
