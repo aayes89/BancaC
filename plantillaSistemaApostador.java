@@ -176,7 +176,7 @@ class Candado extends Modalidad {
 class Control { // Clase intermedia (posiblemente para uso en la API)
 
     private Date fecha;
-    private List<Float> salariosPTrabajadores;
+    private List<Double> salariosPTrabajadores;
     private List<Trabajador> listadoTrabajadores;
     private Map<String, Trabajador> datosEntrada; // <String (fecha), Trabajador> 
 
@@ -192,7 +192,7 @@ class Control { // Clase intermedia (posiblemente para uso en la API)
         datosEntrada.put(fecha.toString(), entradaTrabajador);
     }
 
-    public void establecerSalarioBase(float salario) {
+    public void establecerSalarioBase(double salario) {
        for(Trabajador t:listadoTrabajadores){
            t.setSalario(salario);
        }
