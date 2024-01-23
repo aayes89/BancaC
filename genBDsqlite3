@@ -1,0 +1,25 @@
+sqlite3 Listero-db.db <<EOF
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE android_metadata (locale TEXT);
+INSERT INTO android_metadata VALUES('es_US');
+CREATE TABLE listaApi (id TEXT NOT NULL, totalLimpio REAL NOT NULL, premio REAL NOT NULL, tiro TEXT NOT NULL, tlotto TEXT NOT NULL, createdAt TEXT NOT NULL, pierde REAL NOT NULL, gana REAL NOT NULL, urlImage TEXT NOT NULL, pdf TEXT NOT NULL, filename TEXT NOT NULL, PRIMARY KEY(id));
+CREATE TABLE listaLocal (lista TEXT NOT NULL, enviada INTEGER NOT NULL, horarioJugada TEXT NOT NULL, creadaEn INTEGER NOT NULL, terminadaEn INTEGER NOT NULL, letra TEXT NOT NULL, num INTEGER NOT NULL, limpio REAL NOT NULL, id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);
+INSERT INTO listaLocal VALUES('18a9e4945fcc757b', 1, 'noche', 1705977717003, 1705977717004, 'L', 3, 0.0, 1);
+CREATE TABLE jugada (listaLocal_id INTEGER NOT NULL, id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(listaLocal_id) REFERENCES listaLocal(id) ON UPDATE NO ACTION ON DELETE NO ACTION );
+CREATE TABLE fijo (numero TEXT NOT NULL, dFijo INTEGER NOT NULL, dCorrido INTEGER NOT NULL, listaLocal_id INTEGER NOT NULL, id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);
+CREATE TABLE centena (numero TEXT NOT NULL, dinero INTEGER NOT NULL, listaLocal_id INTEGER NOT NULL, id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);
+CREATE TABLE parle (dinero INTEGER NOT NULL, listaLocal_id INTEGER NOT NULL, id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);
+CREATE TABLE numeros (parle_id INTEGER NOT NULL, numero TEXT NOT NULL, id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, FOREIGN KEY(parle_id) REFERENCES parle(id) ON UPDATE CASCADE ON DELETE CASCADE );
+CREATE TABLE limitadosApi (dia TEXT NOT NULL, noche TEXT NOT NULL, parles TEXT NOT NULL, id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL);
+CREATE TABLE room_master_table (id INTEGER PRIMARY KEY, identity_hash TEXT);
+INSERT INTO room_master_table VALUES(42, '927ec592973a551218010b7f5ff9d3c5');
+DELETE FROM sqlite_sequence;
+INSERT INTO sqlite_sequence VALUES('listaLocal', 1);
+CREATE INDEX index_jugada_listaLocal_id ON jugada (listaLocal_id);
+CREATE INDEX index_fijo_listaLocal_id ON fijo (listaLocal_id);
+CREATE INDEX index_centena_listaLocal_id ON centena (listaLocal_id);
+CREATE INDEX index_parle_listaLocal_id ON parle (listaLocal_id);
+CREATE INDEX index_numeros_parle_id ON numeros (parle_id);
+COMMIT;
+EOF
