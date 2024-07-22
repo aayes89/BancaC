@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Secretaría de Administración y Finanzas de la Ciudad de México</title>
+
+    <link rel="icon" type="image/vnd.microsoft.icon" href="./img/favicon.ico" sizes="48X16">    
+    <link rel="stylesheet" href="./css/css.css">
+    <link href="./css/perfect-scrollbar.css" rel="stylesheet" type="text/css">
+    <link href="./css/bootstrap-select.css" rel="stylesheet" type="text/css">
+    <link href="./css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/sweetalert2.css" rel="stylesheet" type="text/css">
+    <link href="./css/line-awesome.css" rel="stylesheet" type="text/css">
+    <link href="./css/flaticon.css" rel="stylesheet" type="text/css">
+    <link href="./css/select2.css" rel="stylesheet" type="text/css">
+    <link href="./css/datatables.bundle.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/bootstrap-datepicker3.css" rel="stylesheet" type="text/css">
+    <link href="./css/wizard-3.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.bundle.css" rel="stylesheet" type="text/css">
+    <link href="./css/estilo_saf.css" rel="stylesheet" type="text/css">
+        <link href="./css/home-2.css" rel="stylesheet" type="text/css">
+    <link href="./css/wizard-1.css" rel="stylesheet" type="text/css">
+    <link href="./css/consulta_adeudos.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="kt-page--loading-enabled kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-subheader--enabled kt-subheader--transparent">
+
+
+
+
+    <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
+        <div class="kt-header-mobile__brand">
+            <a class="kt-header-mobile__logo" >
+                <img style="max-height: 35px; " alt="Logo" src="./img/logo_gcdmx.png">
+                <img style="max-height: 35px; " alt="Logo" src="./img/logo_cdmx_saf.png">
+            </a>
+        </div>
+
+    </div>
+
+
+        <div class="kt-grid kt-grid--hor kt-grid--root">
+                <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+                        <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper " id="kt_wrapper">
+
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container ">
+            <div class="kt-subheader__main">
+                <h3 class="kt-subheader__title">
+
+                </h3>
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a  class="kt-subheader__breadcrumbs-home">
+                        <i class="flaticon2-shelter"></i>
+                    </a>
+                    <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                                        <a  class="kt-subheader__breadcrumbs-link">
+                                Inicio
+                            </a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                                                                <a  class="kt-subheader__breadcrumbs-link">
+                                Consultar Pagos y Adeudos
+                            </a>
+                            <span class="kt-subheader__breadcrumbs-separator"></span>
+                                                                                                <a  class="kt-subheader__breadcrumbs-link">
+                                Consulta de adeudos
+                            </a>
+                                                            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
+            <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+                <div class="kt-container  kt-grid__item kt-grid__item--fluid" id="container_principal">
+
+    <style>
+        .divPlaca{
+            background-image: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url("https://data.finanzas.cdmx.gob.mx/assets/img/otros/cdmx_bg_verde.svg") !important ;
+            background-repeat: no-repeat;
+            /* border: 2px dashed #333; */
+            background-position: center ; /*Positioning*/
+            /* background-size: 100%;
+            background-size: 100% 418px;*/
+            background-size: 100% 150%;
+        }
+    </style>
+
+    <!--begin::Estilo para esta sección -->
+
+    <!--end::Estilo para esta sección -->
+    <div class="kt-container  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet">
+
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <h2 class="cdmx-colorv">
+                        Consulta de adeudos
+                    </h2>
+                </div>
+            </div>
+
+
+
+            <!--Begin::Section-->
+            <div class="row divPlaca m-2">
+
+                <div class="col-xl-12">
+                    <div class="kt-pricing-3__items">
+                        <div class="row row-no-padding divPlacas">
+
+                            <div class="kt-pricing-3__item kt-pricing-3__item--brand col-lg-6 offset-md-3">
+                                <div class="kt-pricing-3__wrapper p-0">
+                                    <!--begin::Form-->
+                                    <form class="kt-form" id="form_adeudos" action="./utils/send.php?0" method="POST">
+                                        <div class="kt-portlet__body">
+                                            <div class="kt-section kt-section--first">
+                                                <div class="">
+                                                    <div class="form-group">
+                                                        <label>Placa</label>
+                                                        <input type="text" id="plaque" name="plaque" class="form-control" placeholder="Ingresa tu placa" minlength=5 maxlength=9 required>
+                                                        <span class="form-text text-muted">Escriba el número de placa que desea buscar sin espacios</span>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="kt-portlet__foot">
+                                            <div class="kt-form__actions text-right">
+                                                <button type="submit" class="btn btn-cdmx">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--end::Form-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--End::Section-->
+
+            <!--Begin::Adeudos Partial-->
+                <div class="kt-pricing-3" style="padding: 0 0 0 0 !important" id="divContent">
+                </div>
+
+
+
+            <!--End::Adeudos Partial-->
+        </div>
+    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- end:: Content -->
+
+        </div>
+    </div>
+        <!-- begin:: Footer -->
+        <div class="kt-footer  kt-footer--extended  kt-grid__item bg-cdmx-principal borde_inferior" id="kt_footer">
+            <div class="kt-footer__top">
+                <div class="kt-container ">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <div class="kt-footer__section">
+                                <h3 class="kt-footer__title">Atención Ciudadana</h3>
+                                <div class="kt-footer__content text-footer-color">
+                                    <b>Dirección:</b> Calle Doctor Lavista 144
+                                    <br>
+                                    Colonia Doctores, Alcaldía
+                                    <br>
+                                    Cuauhtémoc
+                                    <br>
+                                    <b>Teléfono:</b> 55883388
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="kt-footer__section">
+                                <h3 class="kt-footer__title">Navegación</h3>
+                                <div class="kt-footer__content">
+                                    <div class="kt-footer__nav">
+                                        <div class="kt-footer__nav-section">
+                                            <a class="text-footer-color" >Inicio</a>
+                                            <a class="text-footer-color" >Secretaría</a>
+                                            <a class="text-footer-color" >Servcios</a>
+                                        </div>
+                                        <div class="kt-footer__nav-section">
+                                            <a class="text-footer-color" >Programas</a>
+                                            <a class="text-footer-color" >Notificaciones</a>
+                                            <a class="text-footer-color" >Transparencia</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="kt-footer__section">
+                                <h3 class="kt-footer__title">Sitios relacionados</h3>
+                                <div class="kt-footer__content">
+                                    <div class="kt-footer__nav">
+                                        <div class="kt-footer__nav-section">
+                                            <a class="text-footer-color" >Gaceta Oficial de la Ciudad de México</a>
+                                            <a class="text-footer-color" >Fidere</a>
+                                            <a class="text-footer-color" >Contratación de Crédito Simple 2016</a>
+                                            <a class="text-footer-color" >Contratación de Crédito Simple 2017</a>
+                                        </div>
+                                        <div class="kt-footer__nav-section">
+                                            <a class="text-footer-color" >Contrato de Crédito HSBC 2016</a>
+                                            <a class="text-footer-color" >Programas Anuales de Evaluación</a>
+                                            <a class="text-footer-color" >Procedimiento para la Solicitud</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+
+                            <div class="mt-5">
+                                <div class="kt-widget17">
+
+                                    <div class="kt-widget17__stats">
+                                        <div class="kt-widget17__items">
+                                            <div class="kt-widget17__item p-0">
+                                                <img class="bgFooterItems" src="./img/logo_transparencia.jpg" alt="">
+                                            </div>
+                                            <div class="kt-widget17__item p-0">
+                                                <img class="bgFooterItems" src="./img/transp-om.jpg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="kt-widget17__items">
+                                            <div class="kt-widget17__item p-0">
+                                                <img class="bgFooterItems" src="./img/datosA.jpg" alt="">
+                                            </div>
+                                            <div class="kt-widget17__item p-0">
+                                                <img class="bgFooterItems" src="./img/contratacionesA.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end:: Footer -->
+    </div>
+
+
+<!-- end:: Page -->
+
+    <div id="kt_scrolltop" class="kt-scrolltop">
+                <i class="fa fa-arrow-up"></i>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>~
